@@ -1,21 +1,26 @@
 package com.idlejdr.model.personnage;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import com.idlejdr.model.item.Item;
+import com.idlejdr.model.skill.Skill;
 
 public class Personnage  {
-	public enum JobName {
+	public enum Job {
 		Fighter,
 		Caster;
 	}
 
 	private String name;
-	private int hp,mp,attp,attm,defp,defm,exp,level;
-	private JobName job;
-	private ArrayList<Item> itemList ;
+	private int hp,mp,attp,attm,defp,defm,exp,level,initiative;
 
-	public Personnage(Personnage.JobName monjob, String name, int hp, int mp, int attp, int defp, int attm, int defm) {
+
+	private Job job;
+	private ArrayList<Item> itemList ;
+	private ArrayList<Skill> skillList;
+
+	public Personnage(Personnage.Job monjob, String name, int hp, int mp, int attp, int defp, int attm, int defm) {
 		this.job = monjob;
 		this.name=name;
 		this.hp=hp;
@@ -102,11 +107,11 @@ public class Personnage  {
 		this.level = level;
 	}
 
-	public JobName getJob() {
+	public Job getJob() {
 		return job;
 	}
 
-	public void setJob(JobName job) {
+	public void setJob(Job job) {
 		this.job = job;
 	}
 
@@ -118,6 +123,27 @@ public class Personnage  {
 		this.itemList = itemList;
 	}
 
-	
+	public void addItem(Item item){
+		this.itemList.add(item);
+	}
 
+	public void addSkill(Skill skill){
+		skillList.add(skill);
+	}
+
+	public int getInitiative() {
+		return new Random().nextInt((6 - 1) + 1) + 1;
+	}
+
+	public void setInitiative(int initiative) {
+		this.initiative = initiative;
+	}
+
+	public ArrayList<Skill> getSkillList() {
+		return skillList;
+	}
+
+	public void setSkillList(ArrayList<Skill> skillList) {
+		this.skillList = skillList;
+	}
 }
