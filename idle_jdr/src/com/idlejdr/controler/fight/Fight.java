@@ -16,8 +16,12 @@ public class Fight {
 		fightingParticipant.addAll(monsters);
 		Collections.shuffle(fightingParticipant);
 
+		// Boucle sur tous les gambits pour trouver le correspondant et lancer
+		// le skill
 		for (Personnage combatant : fightingParticipant) {
-			combatant.printPerso();
+			combatant.chooseGambit(fightingParticipant)
+					.getSkillGambit(fightingParticipant)
+					.use(fightingParticipant);
 		}
 
 	}

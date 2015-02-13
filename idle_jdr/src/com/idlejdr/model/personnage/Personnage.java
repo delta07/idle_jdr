@@ -18,6 +18,19 @@ public class Personnage {
 	private Job job;
 	private ArrayList<Item> itemList;
 	private ArrayList<Skill> skillList;
+	private ArrayList<Gambit> gambitList;
+
+	public ArrayList<Gambit> getGambitList() {
+		return gambitList;
+	}
+
+	public void setGambitList(ArrayList<Gambit> gambitList) {
+		this.gambitList = gambitList;
+	}
+
+	public void setHp(long hp) {
+		this.hp = hp;
+	}
 
 	public Personnage(Personnage.Job monjob, String name, long hp, long mp,
 			long attp, long defp, long attm, long defm) {
@@ -223,5 +236,30 @@ public class Personnage {
 					.round((Math.pow((double) this.level, 1.4) + 10) * 1.1);
 			this.hp = defp * 13;
 		}
+	}
+
+	public void addGambit(Gambit gambit) {
+		this.gambitList.add(gambit);
+	}
+
+	public void sortGambitByPriority() {
+
+		// Tier par ordre de priorite la liste des gambits
+
+	}
+
+	/*
+	 * Tri les gambit par ordre de priorite Boucle ensuite pour trouver le
+	 * premier gambit dont les conditions sont respectees
+	 */
+	public Gambit chooseGambit(ArrayList<Personnage> persoList) {
+		sortGambitByPriority();
+		for (Gambit gambits : gambitList) {
+			if (gambits.checkgambit(persoList)) {
+				return gambits;
+			}
+		}
+		return null;
+
 	}
 }

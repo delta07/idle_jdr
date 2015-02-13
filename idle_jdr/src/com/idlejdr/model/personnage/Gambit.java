@@ -33,22 +33,15 @@ public class Gambit {
 		this.sk = sk;
 	}
 
-	public ArrayList<Personnage> checkgambit(ArrayList<Personnage> listPerso) {
+	public boolean checkgambit(ArrayList<Personnage> listPerso) {
 
-		return listPerso;
+		return true;
 
 	}
 
-	public Personnage checkgambit(Personnage perso) {
-		long caracCible;
-		if (this.gambitCaracCible == GambitCaracCible.hp)
-			caracCible = perso.getHp();
-		if (this.gambitCaracCible == GambitCaracCible.mp)
-			caracCible = perso.getMp();
+	public Skill getSkillGambit(ArrayList<Personnage> persoList) {
 
-		// perso().choixGambit().skill().use()
-
-		return perso;
+		return sk;
 
 	}
 
