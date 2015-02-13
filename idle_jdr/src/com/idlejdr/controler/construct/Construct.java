@@ -9,28 +9,24 @@ import com.idlejdr.model.world.dungeons.Floor;
 import com.idlejdr.model.world.dungeons.Room;
 
 public class Construct {
-	
-	
-	public static Skill createSkill(){
-		Skill sk = new Heal("Soigne 30 pv");
+
+	public static Skill createSkill() {
+		Skill sk = new Heal(1, 0.2);
 		return sk;
-		
+
 	}
-	
-	public static Dungeons CreateDungeons(){
-		
+
+	public static Dungeons CreateDungeons() {
+
 		Dungeons donjon = new Dungeons();
 		Floor flo = new Floor();
 		Room ro = new Room();
-		Personnage monstre = new Personnage(Job.Fighter, "Gobelin", 100, 50, 10, 10, 10, 10);
+		Personnage monstre = new Personnage(Job.Fighter, "Gobelin", 100, 50,
+				10, 10, 10, 10);
 		ro.addCharac(monstre);
 		flo.addRoom(ro);
 		donjon.addFloor(flo);
-		
-		
-		
-		
-		
+
 		return null;
 	}
 

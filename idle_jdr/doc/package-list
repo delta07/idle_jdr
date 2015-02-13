@@ -1,0 +1,9 @@
+com.idlejdr.controler.construct
+com.idlejdr.controler.fight
+com.idlejdr.model.item
+com.idlejdr.model.personnage
+com.idlejdr.model.skill
+com.idlejdr.model.world
+com.idlejdr.model.world.dungeons
+com.idlejdr.model.world.town
+com.idlejdr.test
