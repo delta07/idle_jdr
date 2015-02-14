@@ -7,7 +7,7 @@ import com.idlejdr.model.personnage.Personnage;
 public class Slash extends Skill {
 
 	public Slash(String desc) {
-		this.description = "Une grande attaque qui inflige 150% des dégats normaux";
+		this.description = "Une grande attaque qui inflige 150% des dÃ©gats normaux";
 	}
 
 	@Override

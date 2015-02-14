@@ -11,9 +11,14 @@ public class Personnage {
 		Fighter, Caster;
 	}
 
+	public enum Type {
+		ally, enemy, neutral;
+	}
+
 	private String name;
 	private long hp, mp, attp, attm, defp, defm, exp, initiative;
 	private long level;
+	private Type type;
 
 	private Job job;
 	private ArrayList<Item> itemList;
@@ -33,7 +38,7 @@ public class Personnage {
 	}
 
 	public Personnage(Personnage.Job monjob, String name, long hp, long mp,
-			long attp, long defp, long attm, long defm) {
+			long attp, long defp, long attm, long defm, Type type) {
 		this.job = monjob;
 		this.name = name;
 		this.hp = hp;
@@ -44,6 +49,7 @@ public class Personnage {
 		this.defm = defm;
 		this.exp = 0;
 		this.level = 1;
+		this.type = type;
 
 	}
 
@@ -54,18 +60,28 @@ public class Personnage {
 	 * 
 	 * @Author Delta
 	 */
-	public Personnage(Personnage.Job job, String name) {
+	public Personnage(Personnage.Job job, String name, Type type) {
 		this.job = job;
 		this.name = name;
+		this.type = type;
 		this.level = 1;
 		calculStat();
 	}
 
-	public Personnage(Personnage.Job job, String name, long level) {
+	public Personnage(Personnage.Job job, String name, long level, Type type) {
 		this.job = job;
 		this.name = name;
 		this.level = level;
+		this.type = type;
 		calculStat();
+	}
+
+	public Type getType() {
+		return type;
+	}
+
+	public void setType(Type type) {
+		this.type = type;
 	}
 
 	public String getName() {
