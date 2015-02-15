@@ -75,9 +75,11 @@ public class Personnage {
 		this.type = type;
 		this.level = 1;
 
+		DefaultAttack defaultAtta = new DefaultAttack("Attaque de base",
+				"Attaque de base", getJob(), 1, 0);
+		addSkill(defaultAtta);
 		Gambit defaultAtt = new Gambit(GambitCaracCible.hp, GambitCible.enemy,
-				GambitOpe.supEqual, 100, 0, new DefaultAttack(
-						"Attaque de base", "Attaque de base", getJob(), 1, 0));
+				GambitOpe.supEqual, 100, 0, defaultAtta);
 		addGambit(defaultAtt);
 		calculStat();
 

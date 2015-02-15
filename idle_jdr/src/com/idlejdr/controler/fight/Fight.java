@@ -16,16 +16,15 @@ public class Fight {
 
 		// Boucle sur tous les gambits pour trouver le correspondant et lancer
 		// le skill
+		do {
+			for (Personnage perso : fightListParticipant) {
+				perso.printPerso();
+				perso.chooseGambit(fightListParticipant).getSk()
+						.use(perso, fightListParticipant);
+				perso.printPerso();
+			}
 
-		// while (true) {
-		// for (Personnage listAlly : fightListParticipant) {
-		// if(listAlly.getType()==Type.ally && listAlly.getHp() > 0)
-		//
-		// }
-		// for (Personnage listEnemy : fightListParticipant) {
-		//
-		// }
-		// }
+		} while (false);
 
 	}
 }

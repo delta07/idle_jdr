@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.idlejdr.model.personnage.Personnage;
 import com.idlejdr.model.personnage.Personnage.Job;
+import com.idlejdr.model.personnage.Personnage.Type;
 
 public class DefaultAttack extends Skill {
 
@@ -14,12 +15,22 @@ public class DefaultAttack extends Skill {
 
 	@Override
 	public void use(Personnage caster, ArrayList<Personnage> persoList) {
-		use(caster, persoList.get(0));
+		Personnage temp = persoList.get(0);
+		Type tp;
+		if (caster.getType() == Type.enemy)
+			tp = Type.ally;
+		else
+			tp = Type.enemy;
+		for (Personnage persoL : persoList) {
+			if (persoL.getType() == tp && persoL.getHp() < temp.getHp())
+				temp = persoL;
+		}
+		use(caster, temp);
 
 	}
 
 	@Override
 	public void use(Personnage caster, Personnage perso) {
-		caster.attackPhysDamage(perso);
+		perso.setHp(perso.getHp() - caster.attackPhysDamage(perso));
 	}
 }
