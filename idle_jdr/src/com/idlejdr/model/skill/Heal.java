@@ -3,13 +3,15 @@ package com.idlejdr.model.skill;
 import java.util.ArrayList;
 
 import com.idlejdr.model.personnage.Personnage;
+import com.idlejdr.model.personnage.Personnage.Job;
 
 public class Heal extends Skill {
 
 	// facteur de heal 20%, 30%, etc
 	double fact;
 
-	public Heal(int level, double fact) {
+	public Heal(String name, String description, Job job, int level, int cost) {
+		super(name, description, job, level, cost);
 		this.fact = fact;
 		this.description = "Soigne la cible de " + fact * 100
 				+ "% de ces points de vie";
@@ -19,16 +21,16 @@ public class Heal extends Skill {
 
 	}
 
-	public void use(ArrayList<Personnage> perso) {
+	public void use(Personnage caster, ArrayList<Personnage> perso) {
 		for (Personnage perso1 : perso) {
-			perso1.setHp((int) perso1.getHp() + perso1.getHp() * this.fact);
+			// perso1.setHp((int) perso1.getHp() + perso1.getHp() * this.fact);
 		}
 
 	}
 
 	@Override
-	public void use(Personnage perso1) {
-		perso1.setHp((int) perso1.getHp() + perso1.getHp() * this.fact);
+	public void use(Personnage caster, Personnage perso1) {
+		// perso1.setHp((int) perso1.getHp() + perso1.getHp() * this.fact);
 
 	}
 }

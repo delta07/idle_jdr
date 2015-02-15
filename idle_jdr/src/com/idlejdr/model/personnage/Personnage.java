@@ -1,9 +1,12 @@
 package com.idlejdr.model.personnage;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 import com.idlejdr.model.item.Item;
+import com.idlejdr.model.personnage.Gambit.GambitCaracCible;
+import com.idlejdr.model.personnage.Gambit.GambitCible;
+import com.idlejdr.model.personnage.Gambit.GambitOpe;
+import com.idlejdr.model.skill.DefaultAttack;
 import com.idlejdr.model.skill.Skill;
 
 public class Personnage {
@@ -16,7 +19,7 @@ public class Personnage {
 	}
 
 	private String name;
-	private long hp, mp, attp, attm, defp, defm, exp, initiative;
+	private long hp, mp, attp, attm, defp, defm, exp;
 	private long level;
 	private Type type;
 
@@ -61,18 +64,37 @@ public class Personnage {
 	 * @Author Delta
 	 */
 	public Personnage(Personnage.Job job, String name, Type type) {
+		// job = new Job;
+		itemList = new ArrayList<Item>();
+		skillList = new ArrayList<Skill>();
+		gambitList = new ArrayList<Gambit>();
+		this.name = new String();
+
 		this.job = job;
 		this.name = name;
 		this.type = type;
 		this.level = 1;
+
+		Gambit defaultAtt = new Gambit(GambitCaracCible.hp, GambitCible.enemy,
+				GambitOpe.supEqual, 100, 0, new DefaultAttack(
+						"Attaque de base", "Attaque de base", getJob(), 1, 0));
+		addGambit(defaultAtt);
 		calculStat();
+
 	}
 
 	public Personnage(Personnage.Job job, String name, long level, Type type) {
+		skillList = new ArrayList<Skill>();
+		gambitList = new ArrayList<Gambit>();
+
 		this.job = job;
 		this.name = name;
 		this.level = level;
 		this.type = type;
+		Gambit defaultAtt = new Gambit(GambitCaracCible.hp, GambitCible.enemy,
+				GambitOpe.supEqual, 100, 0, new DefaultAttack(
+						"Attaque de base", "Attaque de base", getJob(), 1, 0));
+		addGambit(defaultAtt);
 		calculStat();
 	}
 
@@ -94,10 +116,6 @@ public class Personnage {
 
 	public long getHp() {
 		return hp;
-	}
-
-	public void setHp(double d) {
-		this.hp = (long) d;
 	}
 
 	public long getMp() {
@@ -180,14 +198,6 @@ public class Personnage {
 		skillList.add(skill);
 	}
 
-	public long getInitiative() {
-		return new Random().nextInt((6 - 1) + 1) + 1;
-	}
-
-	public void setInitiative(long initiative) {
-		this.initiative = initiative;
-	}
-
 	public ArrayList<Skill> getSkillList() {
 		return skillList;
 	}
@@ -255,7 +265,10 @@ public class Personnage {
 	}
 
 	public void addGambit(Gambit gambit) {
+		// System.out.println(gambit.getSk().getName());
 		this.gambitList.add(gambit);
+		// System.out.println(gambitList.get(0).getSk().getName());
+
 	}
 
 	public void sortGambitByPriority() {
@@ -269,7 +282,11 @@ public class Personnage {
 	 * premier gambit dont les conditions sont respectees
 	 */
 	public Gambit chooseGambit(ArrayList<Personnage> persoList) {
-		sortGambitByPriority();
+		// sortGambitByPriority();
+		// System.out.println(gambitList.size());
+		for (int i = 0; i < gambitList.size(); i++) {
+			// System.out.println(gambitList.get(i).getSk().getName());
+		}
 		for (Gambit gambits : gambitList) {
 			if (gambits.checkgambit(persoList)) {
 				return gambits;
@@ -277,5 +294,11 @@ public class Personnage {
 		}
 		return null;
 
+	}
+
+	public void printStatus() {
+		System.out.print(getName() + "    HP : " + getHp() + "     MP : "
+				+ getMp());
+		System.out.println();
 	}
 }
