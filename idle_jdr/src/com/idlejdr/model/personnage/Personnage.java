@@ -22,6 +22,15 @@ public class Personnage {
 	private long hpMax, mpMax, hp, mp, attp, attm, defp, defm, exp;
 	private long level;
 	private Type type;
+	protected int expValue = 0;
+
+	public int getExpValue() {
+		return expValue;
+	}
+
+	public void setExpValue(int expValue) {
+		this.expValue = expValue;
+	}
 
 	private Job job;
 	private ArrayList<Item> itemList;
@@ -46,19 +55,24 @@ public class Personnage {
 
 	public Personnage(Personnage.Job monjob, String name, long hp, long mp,
 			long attp, long defp, long attm, long defm, Type type) {
-		// this.job = monjob;
-		// this.name = name;
-		// this.hp = hp;
-		// this.mp = mp;
-		// this.attp = attp;
-		// this.defp = defp;
-		// this.attm = attm;
-		// this.defm = defm;
-		// this.hpMax = this.defp * 13;
-		// this.mpMax = this.attm * 7;
-		// this.exp = 0;
-		// this.level = 1;
-		// this.type = type;
+
+		skillList = new ArrayList<Skill>();
+		gambitList = new ArrayList<Gambit>();
+
+		this.job = monjob;
+		this.name = name;
+		this.hp = hp;
+		this.mp = mp;
+		this.attp = attp;
+		this.defp = defp;
+		this.attm = attm;
+		this.defm = defm;
+		this.hpMax = this.defp * 13;
+		this.mpMax = this.attm * 7;
+		this.exp = 0;
+		this.level = 1;
+		this.type = type;
+		createDefaultGambit();
 
 	}
 
@@ -81,14 +95,18 @@ public class Personnage {
 		this.type = type;
 		this.level = 1;
 
+		createDefaultGambit();
+		calculStat();
+
+	}
+
+	public void createDefaultGambit() {
 		DefaultAttack defaultAtta = new DefaultAttack("Attaque de base",
 				"Attaque de base", getJob(), 1, 0);
 		addSkill(defaultAtta);
 		Gambit defaultAtt = new Gambit(GambitCaracCible.hp, GambitCible.enemy,
 				GambitOpe.supEqual, 100, 0, defaultAtta);
 		addGambit(defaultAtt);
-		calculStat();
-
 	}
 
 	public Personnage(Personnage.Job job, String name, long level, Type type) {

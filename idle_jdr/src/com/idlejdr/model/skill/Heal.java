@@ -41,8 +41,7 @@ public class Heal extends Skill {
 			if (cible.getHp() > p.getHp())
 				cible = p;
 		}
-		caster.printStatus();
-		cible.printStatus();
+
 		use(caster, cible);
 
 	}

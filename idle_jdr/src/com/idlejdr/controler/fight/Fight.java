@@ -8,20 +8,21 @@ import com.idlejdr.model.personnage.Personnage.Type;
 
 public class Fight {
 
+	int expTot = 0;
+
 	public Fight(ArrayList<Personnage> fightListParticipant) {
-		// Definir algorythme de combat
-		// Plusieurs perso plusieurs monstre
-
-		// Definir Initative
-
 		// Boucle sur tous les gambits pour trouver le correspondant et lancer
 		// le skill
 
 		while (checkAllyAlive(fightListParticipant)
 				&& checkEnemyAlive(fightListParticipant)) {
 			Collections.shuffle(fightListParticipant);
-			System.out.println("---------------NOUVEAU ROUND----------------");
+			// System.out.println("---------------NOUVEAU ROUND----------------");
 			fightRound(fightListParticipant);
+		}
+
+		for (Personnage perso : fightListParticipant) {
+			perso.addExp(expTot / fightListParticipant.size());
 		}
 
 	}
@@ -69,8 +70,11 @@ public class Fight {
 	public void removeDead(ArrayList<Personnage> fightListParticipant) {
 		try {
 			for (Personnage perso : fightListParticipant) {
-				if (perso.getHp() <= 0)
+				if (perso.getHp() <= 0) {
 					fightListParticipant.remove(perso);
+					this.expTot += perso.getExpValue();
+				}
+
 			}
 		} catch (Exception e) {
 			// TODO: handle exception

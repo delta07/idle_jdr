@@ -37,8 +37,6 @@ public class DefaultAttack extends Skill {
 				cible = p;
 		}
 
-		caster.printStatus();
-		cible.printStatus();
 		use(caster, cible);
 
 	}
