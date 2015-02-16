@@ -19,7 +19,7 @@ public class Personnage {
 	}
 
 	private String name;
-	private long hp, mp, attp, attm, defp, defm, exp;
+	private long hpMax, mpMax, hp, mp, attp, attm, defp, defm, exp;
 	private long level;
 	private Type type;
 
@@ -37,22 +37,28 @@ public class Personnage {
 	}
 
 	public void setHp(long hp) {
+		if (hp < 0)
+			hp = 0;
+		if (hp > hpMax)
+			hp = hpMax;
 		this.hp = hp;
 	}
 
 	public Personnage(Personnage.Job monjob, String name, long hp, long mp,
 			long attp, long defp, long attm, long defm, Type type) {
-		this.job = monjob;
-		this.name = name;
-		this.hp = hp;
-		this.mp = mp;
-		this.attp = attp;
-		this.defp = defp;
-		this.attm = attm;
-		this.defm = defm;
-		this.exp = 0;
-		this.level = 1;
-		this.type = type;
+		// this.job = monjob;
+		// this.name = name;
+		// this.hp = hp;
+		// this.mp = mp;
+		// this.attp = attp;
+		// this.defp = defp;
+		// this.attm = attm;
+		// this.defm = defm;
+		// this.hpMax = this.defp * 13;
+		// this.mpMax = this.attm * 7;
+		// this.exp = 0;
+		// this.level = 1;
+		// this.type = type;
 
 	}
 
@@ -125,6 +131,10 @@ public class Personnage {
 	}
 
 	public void setMp(long mp) {
+		if (mp < 0)
+			mp = 0;
+		if (mp > this.mpMax)
+			mp = this.mpMax;
 		this.mp = mp;
 	}
 
@@ -241,6 +251,7 @@ public class Personnage {
 		if (this.job == Job.Fighter) {
 
 			this.mp = (long) this.level * 10;
+			this.mpMax = (long) this.level * 10;
 			this.attp = (long) Math
 					.round(Math.pow((double) this.level, 1.4) + 10);
 			this.defp = (long) Math
@@ -250,10 +261,12 @@ public class Personnage {
 			this.defm = (long) Math
 					.round(Math.pow((double) this.level, 1.1) + 10);
 			this.hp = defp * 13;
+			this.hpMax = defp * 13;
 
 		} else {
 
 			this.mp = this.level * 15;
+			this.mpMax = this.level * 15;
 			this.attp = (long) Math
 					.round(Math.pow((double) this.level, 1.1) + 10);
 			this.defp = (long) Math
@@ -263,7 +276,24 @@ public class Personnage {
 			this.defm = (long) Math
 					.round((Math.pow((double) this.level, 1.4) + 10) * 1.1);
 			this.hp = defp * 13;
+			this.hpMax = defp * 13;
 		}
+	}
+
+	public long getHpMax() {
+		return hpMax;
+	}
+
+	public void setHpMax(long hpMax) {
+		this.hpMax = hpMax;
+	}
+
+	public long getMpMax() {
+		return mpMax;
+	}
+
+	public void setMpMax(long mpMax) {
+		this.mpMax = mpMax;
 	}
 
 	public void addGambit(Gambit gambit) {
@@ -274,8 +304,18 @@ public class Personnage {
 	}
 
 	public void sortGambitByPriority() {
+		// for (Gambit gb : gambitList) {
+		// System.out.println(gb.getSk().getName());
+		// }
 
-		// Tier par ordre de priorite la liste des gambits
+		ArrayList<Gambit> newList = new ArrayList<Gambit>();
+		for (int i = 1; i <= 100; i++) {
+			for (Gambit gb : gambitList) {
+				if (gb.getPriority() == i)
+					newList.add(gb);
+			}
+		}
+		gambitList = newList;
 
 	}
 
@@ -284,18 +324,22 @@ public class Personnage {
 	 * premier gambit dont les conditions sont respectees
 	 */
 	public Gambit chooseGambit(ArrayList<Personnage> persoList) {
-		// sortGambitByPriority();
-		// System.out.println(gambitList.size());
-		for (int i = 0; i < gambitList.size(); i++) {
-			// System.out.println(gambitList.get(i).getSk().getName());
-		}
+		sortGambitByPriority();
+
 		for (Gambit gambits : gambitList) {
-			if (gambits.checkgambit(persoList)) {
+			if (gambits.checkgambit(persoList)
+					&& checkGambitSkillUsable(gambits)) {
 				return gambits;
 			}
 		}
 		return null;
 
+	}
+
+	public boolean checkGambitSkillUsable(Gambit gambit) {
+		if (gambit.getSk().getCost() <= this.getMp())
+			return true;
+		return false;
 	}
 
 	public void printStatus() {

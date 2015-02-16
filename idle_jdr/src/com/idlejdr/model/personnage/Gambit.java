@@ -57,7 +57,8 @@ public class Gambit {
 				&& gambitCible == GambitCible.ally
 				&& gambitOpe == GambitOpe.infEqual && valueGambit == 25) {
 			for (Personnage perso : listPerso) {
-				if (perso.getType() == Type.ally && perso.getHp() <= 25)
+				if (perso.getType() == Type.ally
+						&& perso.getHp() <= perso.getHpMax() * 0.25)
 
 					return true;
 			}
@@ -66,8 +67,8 @@ public class Gambit {
 				&& gambitCible == GambitCible.ally
 				&& gambitOpe == GambitOpe.infEqual && valueGambit == 50) {
 			for (Personnage perso : listPerso) {
-				if (perso.getType() == Type.ally && perso.getHp() <= 50)
-
+				if (perso.getType() == Type.ally
+						&& perso.getHp() <= perso.getHpMax() * 0.5)
 					return true;
 			}
 			return false;
@@ -75,7 +76,8 @@ public class Gambit {
 				&& gambitCible == GambitCible.ally
 				&& gambitOpe == GambitOpe.infEqual && valueGambit == 75) {
 			for (Personnage perso : listPerso) {
-				if (perso.getType() == Type.ally && perso.getHp() <= 75)
+				if (perso.getType() == Type.ally
+						&& perso.getHp() <= perso.getHpMax() * 0.75)
 
 					return true;
 			}
@@ -84,7 +86,8 @@ public class Gambit {
 				&& gambitCible == GambitCible.ally
 				&& gambitOpe == GambitOpe.infEqual && valueGambit == 100) {
 			for (Personnage perso : listPerso) {
-				if (perso.getType() == Type.ally && perso.getHp() <= 100)
+				if (perso.getType() == Type.ally
+						&& perso.getHp() <= perso.getHpMax() * 1)
 
 					return true;
 			}
@@ -102,7 +105,8 @@ public class Gambit {
 				&& gambitCible == GambitCible.ally
 				&& gambitOpe == GambitOpe.supEqual && valueGambit == 25) {
 			for (Personnage perso : listPerso) {
-				if (perso.getType() == Type.ally && perso.getHp() >= 25)
+				if (perso.getType() == Type.ally
+						&& perso.getHp() >= perso.getHpMax() * 0.25)
 
 					return true;
 			}
@@ -111,7 +115,8 @@ public class Gambit {
 				&& gambitCible == GambitCible.ally
 				&& gambitOpe == GambitOpe.supEqual && valueGambit == 50) {
 			for (Personnage perso : listPerso) {
-				if (perso.getType() == Type.ally && perso.getHp() >= 50)
+				if (perso.getType() == Type.ally
+						&& perso.getHp() >= perso.getHpMax() * 0.50)
 
 					return true;
 			}
@@ -120,7 +125,8 @@ public class Gambit {
 				&& gambitCible == GambitCible.ally
 				&& gambitOpe == GambitOpe.supEqual && valueGambit == 75) {
 			for (Personnage perso : listPerso) {
-				if (perso.getType() == Type.ally && perso.getHp() >= 75)
+				if (perso.getType() == Type.ally
+						&& perso.getHp() >= perso.getHpMax() * 0.75)
 
 					return true;
 			}
@@ -129,7 +135,8 @@ public class Gambit {
 				&& gambitCible == GambitCible.ally
 				&& gambitOpe == GambitOpe.supEqual && valueGambit == 100) {
 			for (Personnage perso : listPerso) {
-				if (perso.getType() == Type.ally && perso.getHp() >= 100)
+				if (perso.getType() == Type.ally
+						&& perso.getHp() >= perso.getHpMax() * 1)
 
 					return true;
 			}
@@ -147,7 +154,8 @@ public class Gambit {
 				&& gambitCible == GambitCible.enemy
 				&& gambitOpe == GambitOpe.infEqual && valueGambit == 25) {
 			for (Personnage perso : listPerso) {
-				if (perso.getType() == Type.enemy && perso.getHp() <= 25)
+				if (perso.getType() == Type.enemy
+						&& perso.getHp() <= perso.getHpMax() * 0.25)
 
 					return true;
 			}
@@ -156,7 +164,8 @@ public class Gambit {
 				&& gambitCible == GambitCible.enemy
 				&& gambitOpe == GambitOpe.infEqual && valueGambit == 50) {
 			for (Personnage perso : listPerso) {
-				if (perso.getType() == Type.enemy && perso.getHp() <= 50)
+				if (perso.getType() == Type.enemy
+						&& perso.getHp() <= perso.getHpMax() * 0.50)
 
 					return true;
 			}
@@ -165,7 +174,8 @@ public class Gambit {
 				&& gambitCible == GambitCible.enemy
 				&& gambitOpe == GambitOpe.infEqual && valueGambit == 75) {
 			for (Personnage perso : listPerso) {
-				if (perso.getType() == Type.enemy && perso.getHp() <= 75)
+				if (perso.getType() == Type.enemy
+						&& perso.getHp() <= perso.getHpMax() * 0.75)
 
 					return true;
 			}
@@ -174,7 +184,8 @@ public class Gambit {
 				&& gambitCible == GambitCible.enemy
 				&& gambitOpe == GambitOpe.infEqual && valueGambit == 100) {
 			for (Personnage perso : listPerso) {
-				if (perso.getType() == Type.enemy && perso.getHp() <= 100)
+				if (perso.getType() == Type.enemy
+						&& perso.getHp() <= perso.getHpMax() * 1)
 
 					return true;
 			}
@@ -192,7 +203,8 @@ public class Gambit {
 				&& gambitCible == GambitCible.enemy
 				&& gambitOpe == GambitOpe.supEqual && valueGambit == 25) {
 			for (Personnage perso : listPerso) {
-				if (perso.getType() == Type.enemy && perso.getHp() >= 25)
+				if (perso.getType() == Type.enemy
+						&& perso.getHp() >= perso.getHpMax() * 0.25)
 
 					return true;
 			}
@@ -201,7 +213,8 @@ public class Gambit {
 				&& gambitCible == GambitCible.enemy
 				&& gambitOpe == GambitOpe.supEqual && valueGambit == 50) {
 			for (Personnage perso : listPerso) {
-				if (perso.getType() == Type.enemy && perso.getHp() >= 50)
+				if (perso.getType() == Type.enemy
+						&& perso.getHp() >= perso.getHpMax() * 0.50)
 
 					return true;
 			}
@@ -210,7 +223,8 @@ public class Gambit {
 				&& gambitCible == GambitCible.enemy
 				&& gambitOpe == GambitOpe.supEqual && valueGambit == 75) {
 			for (Personnage perso : listPerso) {
-				if (perso.getType() == Type.enemy && perso.getHp() >= 75)
+				if (perso.getType() == Type.enemy
+						&& perso.getHp() >= perso.getHpMax() * 0.75)
 
 					return true;
 			}
@@ -219,7 +233,8 @@ public class Gambit {
 				&& gambitCible == GambitCible.enemy
 				&& gambitOpe == GambitOpe.supEqual && valueGambit == 100) {
 			for (Personnage perso : listPerso) {
-				if (perso.getType() == Type.enemy && perso.getHp() >= 100)
+				if (perso.getType() == Type.enemy
+						&& perso.getHp() >= perso.getHpMax() * 1)
 
 					return true;
 			}
@@ -237,7 +252,8 @@ public class Gambit {
 				&& gambitCible == GambitCible.ally
 				&& gambitOpe == GambitOpe.infEqual && valueGambit == 25) {
 			for (Personnage perso : listPerso) {
-				if (perso.getType() == Type.ally && perso.getMp() <= 25)
+				if (perso.getType() == Type.ally
+						&& perso.getMp() <= perso.getMpMax() * 0.25)
 
 					return true;
 			}
@@ -246,7 +262,8 @@ public class Gambit {
 				&& gambitCible == GambitCible.ally
 				&& gambitOpe == GambitOpe.infEqual && valueGambit == 50) {
 			for (Personnage perso : listPerso) {
-				if (perso.getType() == Type.ally && perso.getMp() <= 50)
+				if (perso.getType() == Type.ally
+						&& perso.getMp() <= perso.getMpMax() * 0.50)
 
 					return true;
 			}
@@ -255,7 +272,8 @@ public class Gambit {
 				&& gambitCible == GambitCible.ally
 				&& gambitOpe == GambitOpe.infEqual && valueGambit == 75) {
 			for (Personnage perso : listPerso) {
-				if (perso.getType() == Type.ally && perso.getMp() <= 75)
+				if (perso.getType() == Type.ally
+						&& perso.getMp() <= perso.getMpMax() * 0.75)
 
 					return true;
 			}
@@ -264,7 +282,8 @@ public class Gambit {
 				&& gambitCible == GambitCible.ally
 				&& gambitOpe == GambitOpe.infEqual && valueGambit == 100) {
 			for (Personnage perso : listPerso) {
-				if (perso.getType() == Type.ally && perso.getMp() <= 100)
+				if (perso.getType() == Type.ally
+						&& perso.getMp() <= perso.getMpMax() * 1)
 
 					return true;
 			}
@@ -282,7 +301,8 @@ public class Gambit {
 				&& gambitCible == GambitCible.ally
 				&& gambitOpe == GambitOpe.supEqual && valueGambit == 25) {
 			for (Personnage perso : listPerso) {
-				if (perso.getType() == Type.ally && perso.getMp() >= 25)
+				if (perso.getType() == Type.ally
+						&& perso.getMp() >= perso.getMpMax() * 0.25)
 
 					return true;
 			}
@@ -291,7 +311,8 @@ public class Gambit {
 				&& gambitCible == GambitCible.ally
 				&& gambitOpe == GambitOpe.supEqual && valueGambit == 50) {
 			for (Personnage perso : listPerso) {
-				if (perso.getType() == Type.ally && perso.getMp() >= 50)
+				if (perso.getType() == Type.ally
+						&& perso.getMp() >= perso.getMpMax() * 0.50)
 
 					return true;
 			}
@@ -300,7 +321,8 @@ public class Gambit {
 				&& gambitCible == GambitCible.ally
 				&& gambitOpe == GambitOpe.supEqual && valueGambit == 75) {
 			for (Personnage perso : listPerso) {
-				if (perso.getType() == Type.ally && perso.getMp() >= 75)
+				if (perso.getType() == Type.ally
+						&& perso.getMp() >= perso.getMpMax() * 0.75)
 
 					return true;
 			}
@@ -309,7 +331,8 @@ public class Gambit {
 				&& gambitCible == GambitCible.ally
 				&& gambitOpe == GambitOpe.supEqual && valueGambit == 100) {
 			for (Personnage perso : listPerso) {
-				if (perso.getType() == Type.ally && perso.getMp() >= 100)
+				if (perso.getType() == Type.ally
+						&& perso.getMp() >= perso.getMpMax() * 1)
 
 					return true;
 			}
@@ -327,7 +350,8 @@ public class Gambit {
 				&& gambitCible == GambitCible.enemy
 				&& gambitOpe == GambitOpe.infEqual && valueGambit == 25) {
 			for (Personnage perso : listPerso) {
-				if (perso.getType() == Type.enemy && perso.getMp() <= 25)
+				if (perso.getType() == Type.enemy
+						&& perso.getMp() <= perso.getMpMax() * 0.25)
 
 					return true;
 			}
@@ -336,7 +360,8 @@ public class Gambit {
 				&& gambitCible == GambitCible.enemy
 				&& gambitOpe == GambitOpe.infEqual && valueGambit == 50) {
 			for (Personnage perso : listPerso) {
-				if (perso.getType() == Type.enemy && perso.getMp() <= 50)
+				if (perso.getType() == Type.enemy
+						&& perso.getMp() <= perso.getMpMax() * 0.50)
 
 					return true;
 			}
@@ -345,7 +370,8 @@ public class Gambit {
 				&& gambitCible == GambitCible.enemy
 				&& gambitOpe == GambitOpe.infEqual && valueGambit == 75) {
 			for (Personnage perso : listPerso) {
-				if (perso.getType() == Type.enemy && perso.getMp() <= 75)
+				if (perso.getType() == Type.enemy
+						&& perso.getMp() <= perso.getMpMax() * 0.75)
 
 					return true;
 			}
@@ -354,7 +380,8 @@ public class Gambit {
 				&& gambitCible == GambitCible.enemy
 				&& gambitOpe == GambitOpe.infEqual && valueGambit == 100) {
 			for (Personnage perso : listPerso) {
-				if (perso.getType() == Type.enemy && perso.getMp() <= 100)
+				if (perso.getType() == Type.enemy
+						&& perso.getMp() <= perso.getMpMax() * 1)
 
 					return true;
 			}
@@ -372,7 +399,8 @@ public class Gambit {
 				&& gambitCible == GambitCible.enemy
 				&& gambitOpe == GambitOpe.supEqual && valueGambit == 25) {
 			for (Personnage perso : listPerso) {
-				if (perso.getType() == Type.enemy && perso.getMp() >= 25)
+				if (perso.getType() == Type.enemy
+						&& perso.getMp() >= perso.getMpMax() * 0.25)
 
 					return true;
 			}
@@ -381,7 +409,8 @@ public class Gambit {
 				&& gambitCible == GambitCible.enemy
 				&& gambitOpe == GambitOpe.supEqual && valueGambit == 50) {
 			for (Personnage perso : listPerso) {
-				if (perso.getType() == Type.enemy && perso.getMp() >= 50)
+				if (perso.getType() == Type.enemy
+						&& perso.getMp() >= perso.getMpMax() * 0.50)
 
 					return true;
 			}
@@ -390,7 +419,8 @@ public class Gambit {
 				&& gambitCible == GambitCible.enemy
 				&& gambitOpe == GambitOpe.supEqual && valueGambit == 75) {
 			for (Personnage perso : listPerso) {
-				if (perso.getType() == Type.enemy && perso.getMp() >= 75)
+				if (perso.getType() == Type.enemy
+						&& perso.getMp() >= perso.getMpMax() * 0.75)
 
 					return true;
 			}
@@ -399,7 +429,8 @@ public class Gambit {
 				&& gambitCible == GambitCible.enemy
 				&& gambitOpe == GambitOpe.supEqual && valueGambit == 100) {
 			for (Personnage perso : listPerso) {
-				if (perso.getType() == Type.enemy && perso.getMp() >= 100)
+				if (perso.getType() == Type.enemy
+						&& perso.getMp() >= perso.getMpMax() * 1)
 
 					return true;
 			}
