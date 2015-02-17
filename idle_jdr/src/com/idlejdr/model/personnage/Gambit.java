@@ -5,6 +5,13 @@ import java.util.ArrayList;
 import com.idlejdr.model.personnage.Personnage.Type;
 import com.idlejdr.model.skill.Skill;
 
+/**
+ * Class Gambit A gambit check a condition and have an associate skill If a
+ * gambit is verified, skill is used
+ * 
+ * @author Grankoff Charly
+ *
+ */
 public class Gambit {
 
 	public enum GambitCaracCible {
@@ -29,6 +36,16 @@ public class Gambit {
 	int valueGambit;
 	Skill sk;
 
+	/**
+	 * Cosntructor
+	 * 
+	 * @param gambitCaracCible
+	 * @param gambitCible
+	 * @param gambitOpe
+	 * @param priority
+	 * @param value
+	 * @param sk
+	 */
 	public Gambit(GambitCaracCible gambitCaracCible, GambitCible gambitCible,
 			GambitOpe gambitOpe, int priority, int value, Skill sk) {
 		this.gambitCaracCible = gambitCaracCible;
@@ -39,6 +56,12 @@ public class Gambit {
 		this.valueGambit = value;
 	}
 
+	/**
+	 * Check if gambit matching (return true)
+	 * 
+	 * @param listPerso
+	 * @return true
+	 */
 	public boolean checkgambit(ArrayList<Personnage> listPerso) {
 
 		/*
@@ -441,58 +464,100 @@ public class Gambit {
 
 	}
 
+	/**
+	 * 
+	 * @return gambitCaracCible
+	 */
 	public GambitCaracCible getGambitCaracCible() {
 		return gambitCaracCible;
 	}
 
+	/**
+	 * 
+	 * @param gambitCaracCible
+	 */
 	public void setGambitCaracCible(GambitCaracCible gambitCaracCible) {
 		this.gambitCaracCible = gambitCaracCible;
 	}
 
+	/**
+	 * 
+	 * @return gambitCible
+	 */
 	public GambitCible getGambitCible() {
 		return gambitCible;
 	}
 
+	/**
+	 * 
+	 * @param gambitCible
+	 */
 	public void setGambitCible(GambitCible gambitCible) {
 		this.gambitCible = gambitCible;
 	}
 
+	/**
+	 * 
+	 * @return gambitOpe
+	 */
 	public GambitOpe getGambitOpe() {
 		return gambitOpe;
 	}
 
+	/**
+	 * 
+	 * @param gambitOpe
+	 */
 	public void setGambitOpe(GambitOpe gambitOpe) {
 		this.gambitOpe = gambitOpe;
 	}
 
+	/**
+	 * 
+	 * @return priority
+	 */
 	public int getPriority() {
 		return priority;
 	}
 
+	/**
+	 * 
+	 * @param priority
+	 */
 	public void setPriority(int priority) {
 		this.priority = priority;
 	}
 
+	/**
+	 * 
+	 * @return valueGambit
+	 */
 	public int getValueGambit() {
 		return valueGambit;
 	}
 
+	/**
+	 * 
+	 * @param valueGambit
+	 */
 	public void setValueGambit(int valueGambit) {
 		this.valueGambit = valueGambit;
 	}
 
+	/**
+	 * 
+	 * @return sk
+	 */
 	public Skill getSk() {
 		return sk;
 	}
 
+	/**
+	 * 
+	 * @param sk
+	 */
 	public void setSk(Skill sk) {
 		this.sk = sk;
-	}
-
-	public Skill getSkillGambit(ArrayList<Personnage> persoList) {
-
-		return sk;
-
 	}
 
 }

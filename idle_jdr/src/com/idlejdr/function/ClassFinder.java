@@ -5,6 +5,12 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Find this Class on stackoverflow
+ * 
+ * @author ?
+ *
+ */
 public class ClassFinder {
 
 	private static final char DOT = '.';
@@ -15,6 +21,12 @@ public class ClassFinder {
 
 	private static final String BAD_PACKAGE_ERROR = "Unable to get resources from path '%s'. Are you sure the package '%s' exists?";
 
+	/**
+	 * Find and return all Classes under a package name
+	 * 
+	 * @param scannedPackage
+	 * @return classes
+	 */
 	public static List<Class<?>> find(String scannedPackage) {
 		String scannedPath = scannedPackage.replace(DOT, SLASH);
 		URL scannedUrl = Thread.currentThread().getContextClassLoader()
@@ -31,6 +43,12 @@ public class ClassFinder {
 		return classes;
 	}
 
+	/**
+	 * 
+	 * @param file
+	 * @param scannedPackage
+	 * @return classes
+	 */
 	private static List<Class<?>> find(File file, String scannedPackage) {
 		List<Class<?>> classes = new ArrayList<Class<?>>();
 		String resource = scannedPackage + DOT + file.getName();

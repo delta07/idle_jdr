@@ -10,8 +10,12 @@ public class Dungeons extends Place {
 	ArrayList<Floor> floorList;
 	long level, nbFloor;
 
-	public Dungeons(String name, int level) throws IllegalArgumentException,
-			IllegalAccessException, NoSuchFieldException, SecurityException {
+	/**
+	 * 
+	 * @param name
+	 * @param level
+	 */
+	public Dungeons(String name, int level) {
 		floorList = new ArrayList<Floor>();
 		this.name = name;
 		this.level = level;
@@ -19,28 +23,50 @@ public class Dungeons extends Place {
 		generateFloors();
 	}
 
+	/**
+	 * 
+	 * @return floorList
+	 */
 	public ArrayList<Floor> getFloorList() {
 		return floorList;
 	}
 
+	/**
+	 * 
+	 * @param floorList
+	 */
 	public void setFloorList(ArrayList<Floor> floorList) {
 		this.floorList = floorList;
 	}
 
+	/**
+	 * 
+	 * @return level
+	 */
 	public long getLevel() {
 		return level;
 	}
 
+	/**
+	 * 
+	 * @param level
+	 */
 	public void setLevel(int level) {
 		this.level = level;
 	}
 
+	/**
+	 * 
+	 * @param floor
+	 */
 	public void addFloor(Floor floor) {
 		floorList.add(floor);
 	}
 
-	public void generateFloors() throws IllegalArgumentException,
-			IllegalAccessException, NoSuchFieldException, SecurityException {
+	/**
+	 * Geneting List of Floor (by level) into this Dunjon
+	 */
+	public void generateFloors() {
 		for (int i = 1; i <= this.nbFloor; i++) {
 			Floor fl = new Floor(i, this.level);
 			addFloor(fl);

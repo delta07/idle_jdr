@@ -7,19 +7,33 @@ import com.idlejdr.model.personnage.Personnage.Job;
 import com.idlejdr.model.personnage.Personnage.Type;
 
 public class DefaultAttack extends Skill {
-
+	/**
+	 * Constructor of default Atttack
+	 * 
+	 * @param name
+	 * @param description
+	 * @param job
+	 * @param level
+	 * @param cost
+	 */
 	public DefaultAttack(String name, String description, Job job, int level,
 			int cost) {
 		super(name, description, job, level, cost);
 	}
 
-	@SuppressWarnings("null")
-	@Override
+	/**
+	 * Method use() for using a skill, with caster of the skill and List of
+	 * fighter into parameters. Have to decide here who is the target for using
+	 * use with single target
+	 * 
+	 * @param caster
+	 * @param persoList
+	 */
 	public void use(Personnage caster, ArrayList<Personnage> persoList) {
 
-		// tri amis, enemy sans le caster dans son tableau
 		ArrayList<Personnage> allies = new ArrayList<Personnage>();
 		ArrayList<Personnage> enemies = new ArrayList<Personnage>();
+		// suppress caster of targetList
 		for (Personnage p : persoList) {
 			if (p.equals(caster))
 				continue;
@@ -41,6 +55,13 @@ public class DefaultAttack extends Skill {
 
 	}
 
+	/**
+	 * Method use() caster + cible
+	 * 
+	 * @param caster
+	 * @param perso
+	 * 
+	 */
 	@Override
 	public void use(Personnage caster, Personnage perso) {
 		System.out.println(caster.getName() + " lance " + this.getName()

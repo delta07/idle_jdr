@@ -1,4 +1,4 @@
-package com.idlejdr.controler.construct;
+package com.idlejdr.controler.generator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,38 +6,19 @@ import java.util.Random;
 
 import com.idlejdr.function.ClassFinder;
 import com.idlejdr.model.personnage.Personnage;
-import com.idlejdr.model.skill.Skill;
-import com.idlejdr.model.world.dungeons.Dungeons;
-import com.idlejdr.model.world.dungeons.Floor;
-import com.idlejdr.model.world.dungeons.Room;
 
-public class Construct {
+public class Generator {
 
-	public static Skill createSkill() {
-		// Skill sk = new Heal(1, 0.2);
-
-		return null;
-
-	}
-
-	public static Dungeons CreateDungeons(int level, int nbFloor, int nbRoom)
-			throws IllegalArgumentException, IllegalAccessException,
-			NoSuchFieldException, SecurityException {
-		Dungeons donjon = new Dungeons("DeadMines", 1);
-		for (int i = 0; i <= nbFloor; i++) {
-			Floor fl = new Floor(i, donjon.getLevel());
-			for (int y = 0; y <= nbRoom; y++) {
-				Room ro = new Room(y, donjon.getLevel());
-				fl.addRoom(ro);
-			}
-			donjon.addFloor(fl);
-		}
-
-		return donjon;
-	}
-
-	/*
-	 * Genere une list de monstre par niveau
+	/**
+	 * Generate list of Monsters by level
+	 * 
+	 * @param nombre
+	 * @param level
+	 * @return listMonstre
+	 * @throws IllegalArgumentException
+	 * @throws IllegalAccessException
+	 * @throws NoSuchFieldException
+	 * @throws SecurityException
 	 */
 	public static ArrayList<Personnage> createMobsListByLevel(long nombre,
 			long level) throws IllegalArgumentException,
@@ -51,9 +32,13 @@ public class Construct {
 
 	}
 
-	/*
-	 * choisi aleatoirement parmis un monstre les classe de monstre de level
-	 * choisi, et renvoi le nb de mob choisi
+	/**
+	 * Choose random Mob into a list of Monster into Classes of
+	 * model.personnage.monster
+	 * 
+	 * @param nbMob
+	 * @param classes
+	 * @return array
 	 */
 	public static Object[] generateListMob(int nbMob, Class[] classes) {
 		Object[] array = new Object[nbMob];
@@ -68,8 +53,15 @@ public class Construct {
 		return array;
 	}
 
-	/*
-	 * Renvoi les classe de monstre dont le level corespond
+	/**
+	 * Return Classes Monster with level that is on paramater
+	 * 
+	 * @param level
+	 * @return tabClass
+	 * @throws IllegalArgumentException
+	 * @throws IllegalAccessException
+	 * @throws NoSuchFieldException
+	 * @throws SecurityException
 	 */
 	public static Class[] getMobByLevel(long level)
 			throws IllegalArgumentException, IllegalAccessException,

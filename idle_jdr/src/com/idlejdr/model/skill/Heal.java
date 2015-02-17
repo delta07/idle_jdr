@@ -11,6 +11,14 @@ public class Heal extends Skill {
 	// facteur de heal 20%, 30%, etc
 	double fact;
 
+	/**
+	 * 
+	 * @param name
+	 * @param description
+	 * @param job
+	 * @param level
+	 * @param cost
+	 */
 	public Heal(String name, String description, Job job, int level, int cost) {
 		super(name, description, job, level, cost);
 		this.fact = 0.3;
@@ -22,12 +30,21 @@ public class Heal extends Skill {
 		this.cost = 1;
 	}
 
+	/**
+	 * 
+	 * Method use() for using a skill, with caster of the skill and List of
+	 * fighter into parameters. Have to decide here who is the target for using
+	 * use with single target
+	 * 
+	 * @param caster
+	 * @param persoList
+	 * 
+	 */
 	public void use(Personnage caster, ArrayList<Personnage> persoList) {
-		// tri amis, enemy sans le caster dans son tableau
+
 		ArrayList<Personnage> allies = new ArrayList<Personnage>();
 		ArrayList<Personnage> enemies = new ArrayList<Personnage>();
 		for (Personnage p : persoList) {
-
 			if (caster.getType() == Type.ally && p.getType() == Type.ally)
 				allies.add(p);
 			else if (caster.getType() == Type.enemy
@@ -36,17 +53,23 @@ public class Heal extends Skill {
 			else
 				enemies.add(p);
 		}
-		Personnage cible = allies.get(0);
+		Personnage target = allies.get(0);
 		for (Personnage p : allies) {
-			if (cible.getHp() > p.getHp())
-				cible = p;
+			if (target.getHp() > p.getHp())
+				target = p;
 		}
 
-		use(caster, cible);
+		use(caster, target);
 
 	}
 
-	@Override
+	/**
+	 * Method use() caster + cible
+	 * 
+	 * @param caster
+	 * @param cible
+	 * 
+	 */
 	public void use(Personnage caster, Personnage cible) {
 		cible.setHp(cible.getHp() + Math.round(cible.getHpMax() * this.fact));
 		System.out.println(caster.getName() + " soigne " + cible.getName()
