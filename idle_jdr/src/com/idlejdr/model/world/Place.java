@@ -1,15 +1,15 @@
 package com.idlejdr.model.world;
 
 public class Place {
-	
-	String nom;
+
+	protected String name;
 
 	public String getNom() {
-		return nom;
+		return name;
 	}
 
 	public void setNom(String nom) {
-		this.nom = nom;
+		this.name = nom;
 	}
 
 }

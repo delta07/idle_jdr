@@ -18,46 +18,22 @@ public class Personnage {
 		ally, enemy, neutral;
 	}
 
-	private String name;
-	private long hpMax, mpMax, hp, mp, attp, attm, defp, defm, exp;
-	private long level;
-	private Type type;
+	protected String name;
+	protected long hpMax, mpMax, hp, mp, attp, attm, defp, defm, exp;
+	protected long level;
+	protected Type type;
 	protected int expValue = 0;
+	protected Job job;
+	protected ArrayList<Item> itemList = new ArrayList<>();
+	protected ArrayList<Skill> skillList = new ArrayList<>();
+	protected ArrayList<Gambit> gambitList = new ArrayList<>();
 
-	public int getExpValue() {
-		return expValue;
-	}
+	public Personnage() {
 
-	public void setExpValue(int expValue) {
-		this.expValue = expValue;
-	}
-
-	private Job job;
-	private ArrayList<Item> itemList;
-	private ArrayList<Skill> skillList;
-	private ArrayList<Gambit> gambitList;
-
-	public ArrayList<Gambit> getGambitList() {
-		return gambitList;
-	}
-
-	public void setGambitList(ArrayList<Gambit> gambitList) {
-		this.gambitList = gambitList;
-	}
-
-	public void setHp(long hp) {
-		if (hp < 0)
-			hp = 0;
-		if (hp > hpMax)
-			hp = hpMax;
-		this.hp = hp;
 	}
 
 	public Personnage(Personnage.Job monjob, String name, long hp, long mp,
 			long attp, long defp, long attm, long defm, Type type) {
-
-		skillList = new ArrayList<Skill>();
-		gambitList = new ArrayList<Gambit>();
 
 		this.job = monjob;
 		this.name = name;
@@ -84,20 +60,22 @@ public class Personnage {
 	 * @Author Delta
 	 */
 	public Personnage(Personnage.Job job, String name, Type type) {
-		// job = new Job;
-		itemList = new ArrayList<Item>();
-		skillList = new ArrayList<Skill>();
-		gambitList = new ArrayList<Gambit>();
-		this.name = new String();
-
 		this.job = job;
 		this.name = name;
 		this.type = type;
 		this.level = 1;
-
 		createDefaultGambit();
 		calculStat();
 
+	}
+
+	public Personnage(Personnage.Job job, String name, long level, Type type) {
+		this.job = job;
+		this.name = name;
+		this.level = level;
+		this.type = type;
+		createDefaultGambit();
+		calculStat();
 	}
 
 	public void createDefaultGambit() {
@@ -107,21 +85,6 @@ public class Personnage {
 		Gambit defaultAtt = new Gambit(GambitCaracCible.hp, GambitCible.enemy,
 				GambitOpe.supEqual, 100, 0, defaultAtta);
 		addGambit(defaultAtt);
-	}
-
-	public Personnage(Personnage.Job job, String name, long level, Type type) {
-		skillList = new ArrayList<Skill>();
-		gambitList = new ArrayList<Gambit>();
-
-		this.job = job;
-		this.name = name;
-		this.level = level;
-		this.type = type;
-		Gambit defaultAtt = new Gambit(GambitCaracCible.hp, GambitCible.enemy,
-				GambitOpe.supEqual, 100, 0, new DefaultAttack(
-						"Attaque de base", "Attaque de base", getJob(), 1, 0));
-		addGambit(defaultAtt);
-		calculStat();
 	}
 
 	public Type getType() {
@@ -365,4 +328,29 @@ public class Personnage {
 				+ getMp());
 		System.out.println();
 	}
+
+	public int getExpValue() {
+		return expValue;
+	}
+
+	public void setExpValue(int expValue) {
+		this.expValue = expValue;
+	}
+
+	public ArrayList<Gambit> getGambitList() {
+		return gambitList;
+	}
+
+	public void setGambitList(ArrayList<Gambit> gambitList) {
+		this.gambitList = gambitList;
+	}
+
+	public void setHp(long hp) {
+		if (hp < 0)
+			hp = 0;
+		if (hp > hpMax)
+			hp = hpMax;
+		this.hp = hp;
+	}
+
 }

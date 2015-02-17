@@ -13,12 +13,19 @@ public class Fight {
 	public Fight(ArrayList<Personnage> fightListParticipant) {
 		// Boucle sur tous les gambits pour trouver le correspondant et lancer
 		// le skill
-
+		System.out.println("********NEW FIGHT*******");
 		while (checkAllyAlive(fightListParticipant)
 				&& checkEnemyAlive(fightListParticipant)) {
 			Collections.shuffle(fightListParticipant);
-			// System.out.println("---------------NOUVEAU ROUND----------------");
+			System.out.println("-----NOUVEAU ROUND----");
 			fightRound(fightListParticipant);
+			// try {
+			// Thread.sleep(3000);
+			// } catch (InterruptedException e) {
+			// // TODO Auto-generated catch block
+			// e.printStackTrace();
+			// }
+
 		}
 
 		for (Personnage perso : fightListParticipant) {
