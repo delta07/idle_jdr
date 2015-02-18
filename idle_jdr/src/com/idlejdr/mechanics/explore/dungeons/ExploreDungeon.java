@@ -1,8 +1,8 @@
-package com.idlejdr.controler.explore.dungeons;
+package com.idlejdr.mechanics.explore.dungeons;
 
 import java.util.ArrayList;
 
-import com.idlejdr.controler.fight.Fight;
+import com.idlejdr.mechanics.fight.Fight;
 import com.idlejdr.model.personnage.Personnage;
 import com.idlejdr.model.world.dungeons.Dungeons;
 import com.idlejdr.model.world.dungeons.Floor;

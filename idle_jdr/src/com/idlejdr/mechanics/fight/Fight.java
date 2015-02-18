@@ -1,4 +1,4 @@
-package com.idlejdr.controler.fight;
+package com.idlejdr.mechanics.fight;
 
 import java.util.ArrayList;
 import java.util.Collections;

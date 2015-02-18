@@ -2,8 +2,8 @@ package com.idlejdr.model.world.dungeons;
 
 import java.util.ArrayList;
 
-import com.idlejdr.controler.generator.Generator;
 import com.idlejdr.function.Function;
+import com.idlejdr.mechanics.generator.CreateMobList;
 import com.idlejdr.model.personnage.Personnage;
 
 public class Room {
@@ -101,10 +101,9 @@ public class Room {
 	 */
 	public void generateMobs() {
 		try {
-			characList = Generator
+			characList = CreateMobList
 					.createMobsListByLevel(this.nbMob, this.level);
-		} catch (IllegalArgumentException | IllegalAccessException
-				| NoSuchFieldException | SecurityException e) {
+		} catch (IllegalArgumentException | SecurityException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

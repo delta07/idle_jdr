@@ -118,7 +118,7 @@ public class Personnage {
 	}
 
 	/**
-	 * Method fr create a default GAMBIT Actually the melee attack Priority 100
+	 * Method for create a default GAMBIT Actually the melee attack Priority 100
 	 */
 	public void createDefaultGambit() {
 		DefaultAttack defaultAtta = new DefaultAttack("Attaque de base",

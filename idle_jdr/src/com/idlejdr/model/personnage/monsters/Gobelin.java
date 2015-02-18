@@ -1,6 +1,6 @@
 package com.idlejdr.model.personnage.monsters;
 
-import com.idlejdr.controler.generator.Generator;
+import com.idlejdr.mechanics.generator.CreateMobList;
 import com.idlejdr.model.personnage.Personnage;
 
 public class Gobelin extends Personnage {
@@ -29,7 +29,7 @@ public class Gobelin extends Personnage {
 	/**
 	 * Constructor without param for automatic construct
 	 * 
-	 * @see Generator
+	 * @see CreateMobList
 	 * 
 	 * 
 	 * */

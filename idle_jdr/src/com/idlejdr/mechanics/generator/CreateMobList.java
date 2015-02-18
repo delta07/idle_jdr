@@ -1,4 +1,4 @@
-package com.idlejdr.controler.generator;
+package com.idlejdr.mechanics.generator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +7,7 @@ import java.util.Random;
 import com.idlejdr.function.ClassFinder;
 import com.idlejdr.model.personnage.Personnage;
 
-public class Generator {
+public class CreateMobList {
 
 	/**
 	 * Generate list of Monsters by level
@@ -21,8 +21,7 @@ public class Generator {
 	 * @throws SecurityException
 	 */
 	public static ArrayList<Personnage> createMobsListByLevel(long nombre,
-			long level) throws IllegalArgumentException,
-			IllegalAccessException, NoSuchFieldException, SecurityException {
+			long level) {
 		ArrayList<Personnage> listMonstre = new ArrayList<>();
 		Object[] array = generateListMob((int) nombre, getMobByLevel(level));
 		for (int i = 0; i < array.length; i++) {
@@ -63,15 +62,19 @@ public class Generator {
 	 * @throws NoSuchFieldException
 	 * @throws SecurityException
 	 */
-	public static Class[] getMobByLevel(long level)
-			throws IllegalArgumentException, IllegalAccessException,
-			NoSuchFieldException, SecurityException {
+	public static Class[] getMobByLevel(long level) {
 		List<Class<?>> classes = ClassFinder
 				.find("com.idlejdr.model.personnage.monsters");
 		ArrayList<Class> listClass = new ArrayList<>();
 		for (Class cla : classes) {
-			if (cla.getDeclaredField("LEVEL").getLong(1) == level)
-				listClass.add(cla);
+			try {
+				if (cla.getDeclaredField("LEVEL").getLong(1) == level)
+					listClass.add(cla);
+			} catch (IllegalArgumentException | IllegalAccessException
+					| NoSuchFieldException | SecurityException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		Class[] tabClass = new Class[listClass.size()];
 		for (int i = 0; i < listClass.size(); i++) {
